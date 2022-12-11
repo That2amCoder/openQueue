@@ -1,0 +1,76 @@
+<html lang="en">
+
+  <head>
+    <style>
+        #queue-number {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 18px;
+        }
+
+        #queue-number img {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+    </style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>    
+    <title>Queue Entry System</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Queue Entry System</h1>
+
+      <form >
+        <div class="form-group">
+          <label for="name-input">Name</label>
+          <input type="text" class="form-control" id="name-input" placeholder="Enter your name">
+        </div>
+        <div class="form-group">
+          <label for="question-input">Question</label>
+          <textarea class="form-control" id="question-input" rows="3" placeholder="Enter your question"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="extra-input">Extra Information</label>
+          <input type="text" class="form-control" id="extra-input" placeholder="Enter any extra information">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <div id="queue-number" style="display: none;">
+          Your number is: <span id="queue-number-value"></span>
+      </div>
+  
+    </div>
+    </body>    
+    <script>
+        // Add a submit event listener to the form
+        $("form").submit(function(event) {
+          // Prevent the default form submission behavior
+          event.preventDefault();
+      
+          // Get the values of the form inputs
+          var name = $("#name-input").val();
+          var question = $("#question-input").val();
+          var extra = $("#extra-input").val();
+
+          // Make a POST request to the /addentry endpoint with the form values
+          // The currentl url is /ID/public, the target url is /ID/addentry
+          $.post("/public/addentry", { name: name, question: question, extra: extra }, function(data) {
+            // Show the queue number in the page
+            $("#queue-number").show();
+            $("#queue-number-value").text(data.id);
+
+            // Hide the form
+            $("form").hide();
+          });
+        });
+      </script>
+    
+</html> 
