@@ -2,3 +2,4 @@
 /drivestuff.py
 /token.json
 *.db
+__pycache__/dbhandler.cpython-310.pyc

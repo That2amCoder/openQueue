@@ -1,0 +1,12 @@
+#queue-number {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+#queue-number img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}

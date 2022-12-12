@@ -1,0 +1,20 @@
+.entry {
+    width: 600px;
+    margin: 20px auto;
+    border: 1px solid black;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .entry-name {
+    font-weight: bold;
+  }
+
+  .entry-time {
+    font-style: italic;
+  }
+
+  button {
+    padding: 10px 20px;
+    margin: 10px;
+  }

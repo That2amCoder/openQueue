@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Welcome Handler</title>
+    <style>
+      body {
+        text-align: center;
+      }
+      input {
+        padding: 10px;
+        font-size: 18px;
+      }
+      button {
+        padding: 10px;
+        font-size: 18px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome Handler</h1>
+    <p>Please enter your name:</p>
+    <input type="text" id="name-input" />
+    <button onclick="submitName()">Submit</button>
+    <!-- Import javascript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      // Using jquery make a post request to /handler/setname with the name and refresh the page
+
+        function submitName() {
+            var name = document.getElementById("name-input").value;
+            $.post("/handler/setname", { name: name }, function(data) {
+            location.reload();
+            });
+        }
+    </script>
+  </body>
+</html>

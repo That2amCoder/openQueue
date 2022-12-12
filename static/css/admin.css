@@ -1,0 +1,27 @@
+
+.box {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+  float: left;
+  margin: 10px;
+}
+
+.waiting {
+  background-color: green;
+}
+
+.being-answered {
+  background-color: orange;
+}
+
+.answered {
+  background-color: red;
+}
+
+.entry {
+  background-color: white;
+  margin: 5px;
+  padding: 5px;
+  cursor: move;
+}
