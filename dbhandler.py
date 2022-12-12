@@ -1,5 +1,6 @@
 import sqlite3
 from time import time
+import random
 class DBHandler:
     def __init__(self, db_name):
         self.conn = sqlite3.connect(db_name,check_same_thread=False)
@@ -16,7 +17,7 @@ class DBHandler:
         # generate a 6 character code
         code = ''
         for i in range(6):
-            code += chr(ord('A') + int(time()) % 26)
+            code += chr(random.randint(65, 90))
         self.cur.execute("INSERT INTO queue VALUES (NULL, ?, ?, ?, ?)", (title, description, display_current, code))
         self.conn.commit()
         # return ID
