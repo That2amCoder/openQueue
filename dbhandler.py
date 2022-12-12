@@ -40,7 +40,7 @@ class DBHandler:
         else:
             self.cur.execute("SELECT * FROM queue WHERE code=?", (id,))
             return self.cur.fetchone()
-            
+
     def get_auth_queue(self, authcode):
         self.cur.execute("SELECT * FROM queue WHERE auth_code=?", (authcode,))
         return self.cur.fetchone()
@@ -58,7 +58,7 @@ class DBHandler:
     
 
     def add_queue_entry(self, queue_id, name, question, extra=None):
-        self.cur.execute("INSERT INTO queue_entries VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)", (queue_id, name, question, extra, int(time()), 0, None))
+        self.cur.execute("INSERT INTO queue_entries VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)", (queue_id, name, question, extra, int(time()), 0, "Nobody"))
         # Update the queue's total entries
         self.cur.execute("UPDATE queue SET total_entries=? WHERE id=?", (self.get_queue(queue_id)[6] + 1, queue_id))
         self.conn.commit()

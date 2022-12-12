@@ -20,9 +20,10 @@ def index():
 def create():
     #Parameters: title, description, display_current
     # If a parameter is missing, return 400
-    if 'title' not in flask.request.form or 'description' not in flask.request.form or 'display_current' not in flask.request.form:
+    display_current = False
+    if 'title' not in flask.request.form or 'description' not in flask.request.form:
         return flask.Response(status=400)
-    id, authcode, code = db.create_queue(flask.request.form['title'], flask.request.form['description'], flask.request.form['display_current'])
+    id, authcode, code = db.create_queue(flask.request.form['title'], flask.request.form['description'], display_current)
     res = flask.make_response(flask.redirect('/private/admin'))
     res.set_cookie('authcode', authcode)
     # Set the cookie for the queue
