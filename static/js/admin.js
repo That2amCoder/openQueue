@@ -7,10 +7,10 @@ $(function() {
       $("title").html(data.name);
       //Add the information to the "info" div
       // The code should be represented as domain.com/join/code
-      $("#info").html("Join the queue at <a href='http://localhost:5000/join/" + data.code + "'>http://localhost:5000/join/" + data.code + "</a>");
+      $("#info").html("Join the queue at <a href='" + window.location.href.split("/")[2] + "/join/" + data.code + "'>" + window.location.href.split("/")[2] + "/join/" + data.code + "</a>");
       // Append the queue join link for handler's as domain.com/handler/code
-      $("#info").append("<br>Handlers can join the queue at <a href='http://localhost:5000/join/handler/" + data.authcode + "'>http://localhost:5000/join/handler/" + data.authcode + "</a>");
-      $("#info").append("<br>Public board can be found <a href='/public/board'>http://localhost:5000/public/board</a>");
+      $("#info").append("<br>Handlers can join the queue at <a href='" + window.location.href.split("/")[2] + "/join/handler/" + data.authcode + "'>" + window.location.href.split("/")[2] + "/join/handler/" + data.authcode + "</a>");
+      $("#info").append("<br>Public board can be found <a href='/public/board'>" + window.location.href.split("/")[2] + "/public/board</a>");
 
     });
   }
