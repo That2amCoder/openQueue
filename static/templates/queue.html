@@ -3,7 +3,8 @@
   <head>
     <link rel="stylesheet" type="text/css" href="/static/css/queue.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    
+    <link rel="stylesheet" type="text/css" href="/static/css/base.css">
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,29 +14,26 @@
     <title>Queue Entry System</title>
   </head>
   <body>
-    <div class="container">
-      <h1>Queue Entry System</h1>
 
-      <form >
-        <div class="form-group">
-          <label for="name-input">Name</label>
-          <input type="text" class="form-control" id="name-input" placeholder="Enter your name">
-        </div>
-        <div class="form-group">
-          <label for="question-input">Question</label>
-          <textarea class="form-control" id="question-input" rows="3" placeholder="Enter your question"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="extra-input">Extra Information</label>
-          <input type="text" class="form-control" id="extra-input" placeholder="Enter any extra information">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-      <div id="queue-number" style="display: none;">
-          Your number is: <span id="queue-number-value"></span>
-      </div>
-  
+    <h1>Queue Entry System</h1>
+
+    <form action="/create" method="POST">
+        <label for="title">Name:</label>
+        <input type="text" class="form-control" id="name-input" placeholder="Enter your name" required>
+        <br>
+        <label for="question-input">Question:</label>
+        <textarea id="question-input" class="form-control" name="question-input" placeholder="Enter your question" required></textarea>
+        <br>
+        <label for="extra-input">Extra Information:</label>
+        <textarea id="extra-input" class="form-control" name="extra-input" placeholder="Enter any extra information" required></textarea>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="queue-number" style="display: none;">
+      Your number is: <span id="queue-number-value"></span>
     </div>
+
     </body>    
     <footer>
       <script src="/static/js/queue.js"></script>    
