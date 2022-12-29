@@ -7,10 +7,16 @@ $(function() {
       $("title").html(data.name);
       //Add the information to the "info" div
       // The code should be represented as domain.com/join/code
-      $("#info").html("Join the queue at <a href='" + window.location.href.split("/")[2] + "/join/" + data.code + "'>" + window.location.href.split("/")[2] + "/join/" + data.code + "</a>");
-      // Append the queue join link for handler's as domain.com/handler/code
-      $("#info").append("<br>Handlers can join the queue at <a href='" + window.location.href.split("/")[2] + "/join/handler/" + data.authcode + "'>" + window.location.href.split("/")[2] + "/join/handler/" + data.authcode + "</a>");
-      $("#info").append("<br>Public board can be found <a href='/public/board'>" + window.location.href.split("/")[2] + "/public/board</a>");
+      
+      //First two links were broken for me
+      // $("#info").html("Join the queue at <a href='" + window.location.href.split("/")[2] + "/join/" + data.code + "'>" + window.location.href.split("/")[2] + "/join/" + data.code + "</a>");
+      // // Append the queue join link for handler's as domain.com/handler/code
+      // $("#info").append("<br>Handlers can join the queue at <a href='" + window.location.href.split("/")[2] + "/join/handler/" + data.authcode + "'>" + window.location.href.split("/")[2] + "/join/handler/" + data.authcode + "</a>");
+      // $("#info").append("<br>Public board can be found <a href='/public/board'>" + window.location.href.split("/")[2] + "/public/board</a>");
+      
+      $("#info").html("<a href='" + "/join/" + data.code + "'>" + "Add Entry" + "</a>");
+      $("#info").append("<a href='" + "/join/handler/" + data.authcode + "'>" + "Handler View"+ "</a>");
+      $("#info").append("<a href='/public/board'>" + "Public Board" +"</a>");
 
     });
   }

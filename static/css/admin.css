@@ -1,27 +1,53 @@
-
 .box {
-  width: 200px;
-  height: 200px;
+  width: 30vw;
+  height: 80vh;
   border: 1px solid black;
-  float: left;
   margin: 10px;
-}
-
-.waiting {
-  background-color: green;
-}
-
-.being-answered {
+  }
+  
+  #info{
+  overflow: hidden;
+  background-color: rgb(58, 58, 58); 
+  }
+  
+  #info a{
+  float: left;
+  display: block;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  }
+  
+  #info a:hover {
+  background-color: rgb(95, 172, 255);
+  color: black;
+  }
+  
+  .flex-container{
+  display: flex;
+  justify-content: space-evenly;
+  }
+  
+  .waiting {
+  background-color: rgb(14, 169, 0);
+  }
+  
+  .being-answered {
   background-color: orange;
-}
-
-.answered {
+  }
+  
+  .answered {
   background-color: red;
-}
-
-.entry {
+  }
+  
+  .entry {
   background-color: white;
-  margin: 5px;
-  padding: 5px;
+  height: auto;
+  margin: 8px;
+  padding: 8px;
   cursor: move;
-}
+  }
+  
+  
