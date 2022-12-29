@@ -1,3 +1,5 @@
+
+
 $(function() {
 
   function updateInfo() {
@@ -58,29 +60,64 @@ $(function() {
         }
       });
 
+
       // Make the entries draggable
       $(".entry").draggable({
-        revert: "invalid"
+        revert: "invalid",
+        helper: "clone",
+        start: function(event, ui) {
+          $(this).css("visibility", "hidden");
+        }
       });
 
       // Make the boxes droppable
       waitingBox.droppable({
         accept: ".entry",
         drop: function(event, ui) {
+          var area = $(this).find(".box").html();
+          var box = $(ui.draggable).html()
+          
+          $(ui.draggable).detach().css({
+            top: 0,
+            left: 0,
+            visibility: "visible"
+          }).appendTo(this);
+
+
           var entryId = ui.draggable.attr("id").split("-")[1];
           updateEntryStatus(entryId, 0);
         }
       });
+
       beingAnsweredBox.droppable({
         accept: ".entry",
         drop: function(event, ui) {
+          var area = $(this).find(".box").html();
+          var box = $(ui.draggable).html()
+          
+          $(ui.draggable).detach().css({
+            top: 0,
+            left: 0,
+            visibility: "visible"
+          }).appendTo(this);
+
           var entryId = ui.draggable.attr("id").split("-")[1];
           updateEntryStatus(entryId, 1);
         }
       });
+
       answeredBox.droppable({
         accept: ".entry",
         drop: function(event, ui) {
+          var area = $(this).find(".box").html();
+          var box = $(ui.draggable).html()
+          
+          $(ui.draggable).detach().css({
+            top: 0,
+            left: 0,
+            visibility: "visible"
+          }).appendTo(this);
+
           var entryId = ui.draggable.attr("id").split("-")[1];
           updateEntryStatus(entryId, 2);
         }
@@ -107,7 +144,7 @@ $(function() {
   setInterval(updateBoxes, 10000);
 
   // Update the boxes on page load
-  updateBoxes();
-
   updateInfo();
+  updateBoxes();
 });
+
