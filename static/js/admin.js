@@ -13,9 +13,9 @@ $(function() {
       let addEntryLink = window.location.href.split("/")[2] + "/join/" + data.code;
       let handlerViewLink = window.location.href.split("/")[2] + "/join/handler/" + data.authcode;
       let publicViewLink = window.location.href.split("/")[2] + "/public/board";
-      $("#info").html("<li class='nav-item'><a class='nav-link mx-2' href='http://" + addEntryLink + "' target='_blank'>" + "Add Entry" + "</a></li>");
-      $("#info").append("<li class='nav-item'><a class='nav-link mx-2' href='http://" + handlerViewLink + "' target='_blank'>" + "Handler View"+ "</a></li>");
-      $("#info").append("<li class='nav-item'><a class='nav-link mx-2' href='http://"+ publicViewLink +"' target='_blank'>" + "Public Board" +"</a></li>");
+      $("#info").html("<li class='nav-item'><a class='nav-link mx-3' href='http://" + addEntryLink + "' target='_blank'>" + "Add Entry" + "</a></li>");
+      $("#info").append("<li class='nav-item'><a class='nav-link mx-3' href='http://" + handlerViewLink + "' target='_blank'>" + "Handler View"+ "</a></li>");
+      $("#info").append("<li class='nav-item'><a class='nav-link mx-3' href='http://"+ publicViewLink +"' target='_blank'>" + "Public Board" +"</a></li>");
     });
   }
   
@@ -68,7 +68,8 @@ $(function() {
         helper: "clone",
         start: function(event, ui) {
           $(this).css("visibility", "hidden");
-          $(ui.helper).css('width', "20vw");
+          $(ui.helper).css("z-index", "9");
+          // $(ui.helper).css('width', "33.33vw");
         },
         stop: function(event, ui){
           $(this).css("visibility", "visible");

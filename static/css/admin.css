@@ -1,22 +1,29 @@
 .box {
-  width: 30vw;
-  height: 80vh;
-  border-radius: 1.5rem;
-  margin: 1rem;
+  width: 33.33vw;
+  height: 90vh;
   overflow-x: visible;
   overflow-y: scroll;
 }
 
+.box-title{
+  width: 33.33vw;
+  height: 5vh;
+  display: flex;
+  justify-content: center;  
+  align-items: center;
+}
+
 .waiting{
-  border: 2px solid #dc3545;
+  background-color: #d6abb0;
 }
 
 .being-answered{
-  border: 2px solid #ffc107;
+  background-color: #ffeaab;
 }
 
+
 .answered{
-  border: 2px solid #28a745;
+  background-color: #accdb4;
 }
 
 .flex-container{
@@ -27,15 +34,15 @@
 
 .badge {
   position: absolute;
-  right: 0px;
-  top: 0px;
+  right: 5px;
+  top: 5px;
   border-radius: 0 0 0 26px;
   color: #fff;
 }
 
 .entry{
   background-color: white;
-  margin: 1rem;
+  width: 33.33vw;
   height: auto;
   padding: 20px;
   cursor: move;
