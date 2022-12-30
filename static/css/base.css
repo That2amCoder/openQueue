@@ -9,14 +9,19 @@ h1{
     margin-top: 25px;
 }
 
-form {
+
+
+/* form {
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
-}
-input[type="text"], textarea {
+} */
+
+
+
+/* input[type="text"], textarea {
     resize: vertical;
     width: 100%;
     padding: 12px 20px;
@@ -39,4 +44,4 @@ input[type="submit"] {
 }
 input[type="submit"]:hover {
     background-color: #45a049;
-}
+} */
