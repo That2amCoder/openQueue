@@ -1,5 +1,3 @@
-
-
 $(function() {
 
   function updateInfo() {
@@ -10,16 +8,14 @@ $(function() {
       //Add the information to the "info" div
       // The code should be represented as domain.com/join/code
       
-      //First two links were broken for me
-      // $("#info").html("Join the queue at <a href='" + window.location.href.split("/")[2] + "/join/" + data.code + "'>" + window.location.href.split("/")[2] + "/join/" + data.code + "</a>");
-      // // Append the queue join link for handler's as domain.com/handler/code
-      // $("#info").append("<br>Handlers can join the queue at <a href='" + window.location.href.split("/")[2] + "/join/handler/" + data.authcode + "'>" + window.location.href.split("/")[2] + "/join/handler/" + data.authcode + "</a>");
-      // $("#info").append("<br>Public board can be found <a href='/public/board'>" + window.location.href.split("/")[2] + "/public/board</a>");
-      
-      $("#info").html("<a href='" + "/join/" + data.code + "'>" + "Add Entry" + "</a>");
-      $("#info").append("<a href='" + "/join/handler/" + data.authcode + "'>" + "Handler View"+ "</a>");
-      $("#info").append("<a href='/public/board'>" + "Public Board" +"</a>");
-
+      // Append the queue join link for handler's as domain.com/handler/code
+      console.log(window.location.href.split("/")[2] + "/join/" + data.code);
+      let addEntryLink = window.location.href.split("/")[2] + "/join/" + data.code;
+      let handlerViewLink = window.location.href.split("/")[2] + "/join/handler/" + data.authcode;
+      let publicViewLink = window.location.href.split("/")[2] + "/public/board";
+      $("#info").html("<li class='nav-item'><a class='nav-link mx-2' href='http://" + addEntryLink + "' target='_blank'>" + "Add Entry" + "</a></li>");
+      $("#info").append("<li class='nav-item'><a class='nav-link mx-2' href='http://" + handlerViewLink + "' target='_blank'>" + "Handler View"+ "</a></li>");
+      $("#info").append("<li class='nav-item'><a class='nav-link mx-2' href='http://"+ publicViewLink +"' target='_blank'>" + "Public Board" +"</a></li>");
     });
   }
   
@@ -49,7 +45,12 @@ $(function() {
         // convert it to minutes
         var minutes = Math.floor(timeSince / 60000);
 
-        var entryHtml = "<div class='entry' id='entry-" + id + "'>" + name + "<br>" + question +"<br>" + minutes + " minutes ago. <br> Handled by: <b>" + handlerName + "</b></div>";
+        // var entryHtml = "<div class='entry' id='entry-" + id + "'>" + name + "<br>" + question +"<br>" + minutes + " minutes ago. <br> Handled by: <b>" + handlerName + "</b></div>";
+        var entryHtml = "<div class='entry card' id='entry-" + id + "'>" +
+                        "<div class='card-block'> <h5 class='card-title'>"+name+"</h5>" +
+                        "<h6 class='card-subtitle mb-2 text-muted'>"+minutes+" minutes ago</h6>" +
+                        "<p class='card-text'>"+question+"</p>" + "</div>"+ 
+                        "<h5><span class='badge bg-danger'>"+handlerName+"</span></h5>" + "</div>";
 
         if (status == 0) {
           waitingBox.append(entryHtml);
@@ -67,6 +68,10 @@ $(function() {
         helper: "clone",
         start: function(event, ui) {
           $(this).css("visibility", "hidden");
+          $(ui.helper).css('width', "20vw");
+        },
+        stop: function(event, ui){
+          $(this).css("visibility", "visible");
         }
       });
 
@@ -141,7 +146,7 @@ $(function() {
   }
 
   // Update the boxes every 30 seconds
-  setInterval(updateBoxes, 10000);
+  //setInterval(updateBoxes, 10000);
 
   // Update the boxes on page load
   updateInfo();
