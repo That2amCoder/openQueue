@@ -15,15 +15,24 @@ $(function() {
         var timeSince = Date.now() - (timestamp * 1000);
         // convert it to minutes
         var minutes = Math.floor(timeSince / 60000);
-        var entryHtml = "<p class='entry-name'>" + name + "</p>" +
-                        "<p>" + question + "</p>" +
-                        "<p>" + extra + "</p>" +
-                        "<p class='entry-time'>Submitted " + minutes + " minute(s) ago</p>";
-        //Set the button IDs the same as the entry ID so that when the POST request happens, we know which entry to update
-          entryHtml += "<button id='" + id + "' class='ghost-button'>Ghost</button>";
-          entryHtml += "<button id='" + id + "' class='in-progress-button'>In Progress</button>";
-          entryHtml += "<button id='" + id + "' class='finished-button'>Finished</button>";
-          
+        // var entryHtml = "<p class='entry-name'>" + name + "</p>" +
+        //                 "<p>" + question + "</p>" +
+        //                 "<p>" + extra + "</p>" +
+        //                 "<p class='entry-time'>Submitted " + minutes + " minute(s) ago</p>";
+        // //Set the button IDs the same as the entry ID so that when the POST request happens, we know which entry to update
+        //   entryHtml += "<button id='" + id + "' class='ghost-button'>Ghost</button>";
+        //   entryHtml += "<button id='" + id + "' class='in-progress-button'>In Progress</button>";
+        //   entryHtml += "<button id='" + id + "' class='finished-button'>Finished</button>";
+        
+        var entryHtml = "<div class='entry card' id='entry-" + id + "'>" +
+        "<div class='card-block'> <h5 class='card-title'>"+name+"</h5>" +
+        "<h6 class='card-subtitle mb-2 text-muted'>"+minutes+" minutes ago</h6>" +
+        "<p class='card-text'>"+question+"</p>" + "</div>"+ 
+        "<p class='card-text'>"+extra+"</p>"+
+        "<div class='btn-group' role='group'>"+ 
+        "<button id='" + id + "' class='btn ghost-button'>Ghost</button>"+
+        "<button id='" + id + "' class='btn in-progress-button'>In Progress</button>"+
+        "<button id='" + id + "' class='btn finished-button'>Finished</button>"+"</div>";
         
         $("#entry").html(entryHtml);
       });

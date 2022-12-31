@@ -1,4 +1,25 @@
-.entry {
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h3{
+  margin-top: 20px !important;
+}
+
+.entry{
+  width: 600px;
+  padding: 1rem;
+}
+
+.btn-group{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+/* .entry {
     width: 600px;
     margin: 20px auto;
     border: 1px solid black;
@@ -17,4 +38,4 @@
   button {
     padding: 10px 20px;
     margin: 10px;
-  }
+  } */
