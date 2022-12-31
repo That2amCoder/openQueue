@@ -8,6 +8,14 @@ form{
     min-width: 600px;
 }
 
+.btn{
+    background-color: #7eb6d7;
+}
+
+.user-queue-number{
+    margin-bottom: 20px;
+}
+
 #queue-number {
     display: flex;
     align-items: center;

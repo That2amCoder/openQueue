@@ -17,9 +17,10 @@
 </head>
 <body class="bg-light">
 
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark p-3">
+  <!-- Navigation bar -->
+  <nav class="navbar navbar-expand-sm navbar-light bg-light border-bottom">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><b>Open Queue</b></a>
+      <a class="navbar-brand" href=""><b>Open Queue</b></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -29,13 +30,14 @@
     </div>
   </nav>
 
-  <div class="flex-container bg-light">
+  <!-- Titles for the sections -->
+  <div class="flex-container">
     <div class="box-title waiting-title"><h5>Waiting</h5></div>
     <div class="box-title being-answered-title"><h5>Being Answered</h5></div>
     <div class="box-title answered-title"><h5>Answered</h5></div>
   </div>
     
-
+  <!--Draggable sections  -->
   <div class="flex-container">
     <div id="waiting-box" class="box waiting"></div>
     <div id="being-answered-box" class="box being-answered"></div>

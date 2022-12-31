@@ -3,6 +3,10 @@
   height: 90vh;
   overflow-x: visible;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
 }
 
 .box-title{
@@ -13,17 +17,28 @@
   align-items: center;
 }
 
+.waiting-title{
+  background-color: #faa28c;
+}
+
 .waiting{
-  background-color: #d6abb0;
+  background-color: #fdbfaf;
+}
+
+.being-answered-title{
+  background-color: #f7e679;
 }
 
 .being-answered{
-  background-color: #ffeaab;
+  background-color: #fcee96;
 }
 
+.answered-title{
+  background-color: #82c5ec;
+}
 
 .answered{
-  background-color: #accdb4;
+  background-color: #9ccde9;
 }
 
 .flex-container{
@@ -42,7 +57,9 @@
 
 .entry{
   background-color: white;
-  width: 33.33vw;
+  /* width: 33.33vw; */
+  margin-top: 10px;
+  width: 30vw;
   height: auto;
   padding: 20px;
   cursor: move;

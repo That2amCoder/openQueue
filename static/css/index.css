@@ -5,5 +5,10 @@ body{
 }
 
 form{
-    min-width: 400px;
+    min-width: 600px;
+    
+}
+
+.btn{
+    background-color: #fdbfaf;
 }

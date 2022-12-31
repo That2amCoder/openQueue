@@ -13,9 +13,9 @@ $(function() {
       let addEntryLink = window.location.href.split("/")[2] + "/join/" + data.code;
       let handlerViewLink = window.location.href.split("/")[2] + "/join/handler/" + data.authcode;
       let publicViewLink = window.location.href.split("/")[2] + "/public/board";
-      $("#info").html("<li class='nav-item'><a class='nav-link mx-3' href='http://" + addEntryLink + "' target='_blank'>" + "Add Entry" + "</a></li>");
-      $("#info").append("<li class='nav-item'><a class='nav-link mx-3' href='http://" + handlerViewLink + "' target='_blank'>" + "Handler View"+ "</a></li>");
-      $("#info").append("<li class='nav-item'><a class='nav-link mx-3' href='http://"+ publicViewLink +"' target='_blank'>" + "Public Board" +"</a></li>");
+      $("#info").html("<li class='nav-item'><a class='nav-link mx-3' href='http://" + addEntryLink + "' target='_blank'>" + "<b>Add Entry</b>" + "</a></li>");
+      $("#info").append("<li class='nav-item'><a class='nav-link mx-3' href='http://" + handlerViewLink + "' target='_blank'>" + "<b>Handler View</b>"+ "</a></li>");
+      $("#info").append("<li class='nav-item'><a class='nav-link mx-3' href='http://"+ publicViewLink +"' target='_blank'>" + "<b>Public Board</b>" +"</a></li>");
     });
   }
   

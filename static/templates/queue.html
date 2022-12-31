@@ -30,27 +30,33 @@
       placeholder="Any extra information"></textarea>
 
     <!-- <button class="btn btn-info btn-block" type="submit" value="Submit">Sign in</button> -->
-    <input class="btn btn-info btn-block" type="submit" value="Submit">
+    <input class="btn btn-block" type="submit" value="Submit">
 
   </form>
 
   <!-- Modal button for test -->
-  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#questionPopoutSubmit">
-  Launch demo modal
-</button> -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#questionPopoutSubmit">
+    Launch demo modal
+  </button>
 
   <!-- Modal -->
   <div class="modal fade" id="questionPopoutSubmit" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Question Sent!</h5>
+          <h5 class="modal-title" id="exampleModalLongTitle"><b>Question Sent</b></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          Your number is: <span id="queue-number-value"></span>
+          <p>Your number is:</p>
+
+          <div class="user-queue-number" style="text-align:center">
+            <h1><span id="queue-number-value"></span></h1>
+          </div>
+
+          <p>Feel free to send another question to the queue.</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
