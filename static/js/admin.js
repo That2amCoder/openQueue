@@ -9,13 +9,10 @@ $(function() {
       //The code should be represented as domain.com/join/code
       
       // Append the queue join link for handler's as domain.com/handler/code
-      let domainName = window.location.href.split("/")[2];
-      let addEntryLink = domainName + "/join/" + data.code;
-      let handlerViewLink = domainName + "/join/handler/" + data.authcode;
-      let publicViewLink = domainName + "/public/board";
-      $("#info").html("<li class='nav-item'><a class='nav-link mx-3' href='http://" + addEntryLink + "' target='_blank'>" + "<b>Add Entry</b>" + "</a></li>");
-      $("#info").append("<li class='nav-item'><a class='nav-link mx-3' href='http://" + handlerViewLink + "' target='_blank'>" + "<b>Handler View</b>"+ "</a></li>");
-      $("#info").append("<li class='nav-item'><a class='nav-link mx-3' href='http://"+ publicViewLink +"' target='_blank'>" + "<b>Public Board</b>" +"</a></li>");
+      $("#info").html("<li class='nav-item'><a class='nav-link mx-3' href='/join/"+ data.code +"' target='_blank'>" + "<b>Add Entry</b>" + "</a></li>");
+      $("#info").append("<li class='nav-item'><a class='nav-link mx-3' href='/join/handler/" + data.authcode + "' target='_blank'>" + "<b>Handler View</b>"+ "</a></li>");
+      $("#info").append("<li class='nav-item'><a class='nav-link mx-3' href='/public/board' target='_blank'>" + "<b>Public Board</b>" +"</a></li>");
+    
     });
   }
   
