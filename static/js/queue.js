@@ -17,8 +17,5 @@
       $("#queue-number-value").text(data.id);
 
       $('form').get(0).reset()
-
-      // Hide the form
-      // $("form").hide();
     });
   });

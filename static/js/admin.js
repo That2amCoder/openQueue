@@ -6,13 +6,13 @@ $(function() {
       //Set the title of the page to the queue name
       $("title").html(data.name);
       //Add the information to the "info" div
-      // The code should be represented as domain.com/join/code
+      //The code should be represented as domain.com/join/code
       
       // Append the queue join link for handler's as domain.com/handler/code
-      console.log(window.location.href.split("/")[2] + "/join/" + data.code);
-      let addEntryLink = window.location.href.split("/")[2] + "/join/" + data.code;
-      let handlerViewLink = window.location.href.split("/")[2] + "/join/handler/" + data.authcode;
-      let publicViewLink = window.location.href.split("/")[2] + "/public/board";
+      let domainName = window.location.href.split("/")[2];
+      let addEntryLink = domainName + "/join/" + data.code;
+      let handlerViewLink = domainName + "/join/handler/" + data.authcode;
+      let publicViewLink = domainName + "/public/board";
       $("#info").html("<li class='nav-item'><a class='nav-link mx-3' href='http://" + addEntryLink + "' target='_blank'>" + "<b>Add Entry</b>" + "</a></li>");
       $("#info").append("<li class='nav-item'><a class='nav-link mx-3' href='http://" + handlerViewLink + "' target='_blank'>" + "<b>Handler View</b>"+ "</a></li>");
       $("#info").append("<li class='nav-item'><a class='nav-link mx-3' href='http://"+ publicViewLink +"' target='_blank'>" + "<b>Public Board</b>" +"</a></li>");
@@ -45,7 +45,6 @@ $(function() {
         // convert it to minutes
         var minutes = Math.floor(timeSince / 60000);
 
-        // var entryHtml = "<div class='entry' id='entry-" + id + "'>" + name + "<br>" + question +"<br>" + minutes + " minutes ago. <br> Handled by: <b>" + handlerName + "</b></div>";
         var entryHtml = "<div class='entry card' id='entry-" + id + "'>" +
                         "<div class='card-block'> <h5 class='card-title'>"+name+"</h5>" +
                         "<h6 class='card-subtitle mb-2 text-muted'>"+minutes+" minutes ago</h6>" +
@@ -145,9 +144,6 @@ $(function() {
       }
     });
   }
-
-  // Update the boxes every 30 seconds
-  //setInterval(updateBoxes, 10000);
 
   // Update the boxes on page load
   updateInfo();

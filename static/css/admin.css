@@ -5,7 +5,6 @@
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
 }
 
@@ -57,7 +56,6 @@
 
 .entry{
   background-color: white;
-  /* width: 33.33vw; */
   margin-top: 10px;
   width: 30vw;
   height: auto;
