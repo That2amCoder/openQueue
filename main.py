@@ -2,7 +2,7 @@ import flask
 from dbhandler import DBHandler
 import qrcode
 import yaml
-import io
+import io, os
 import base64
 app = flask.Flask(__name__)
 
@@ -225,6 +225,15 @@ def send_static(path):
     return flask.send_from_directory('static', path)
 
 if __name__ == '__main__':
+    # If the "db" folder doesn't exist, create it
+    if not os.path.exists('db'):
+        os.makedirs('db')
+    
+    # If static/qr doesn't exist, create it
+    if not os.path.exists('static/qr'):
+        os.makedirs('static/qr')
+    
+
     # Open conf.yaml
     config = None
     with open('conf.yaml', 'r') as stream:
