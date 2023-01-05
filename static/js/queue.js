@@ -12,9 +12,10 @@
     $.post("/public/addentry", { name: name, question: question, extra: extra }, function(data) {
       // Show the queue number in the page
       $("#queue-number").show();
+      $('#questionPopoutSubmit').modal('show'); 
+
       $("#queue-number-value").text(data.id);
 
-      // Hide the form
-      $("form").hide();
+      $('form').get(0).reset()
     });
   });

@@ -6,12 +6,13 @@ $(function() {
       //Set the title of the page to the queue name
       $("title").html(data.name);
       //Add the information to the "info" div
-      // The code should be represented as domain.com/join/code
-      $("#info").html("Join the queue at <a href='" + window.location.href.split("/")[2] + "/join/" + data.code + "'>" + window.location.href.split("/")[2] + "/join/" + data.code + "</a>");
+      //The code should be represented as domain.com/join/code
+      
       // Append the queue join link for handler's as domain.com/handler/code
-      $("#info").append("<br>Handlers can join the queue at <a href='" + window.location.href.split("/")[2] + "/join/handler/" + data.authcode + "'>" + window.location.href.split("/")[2] + "/join/handler/" + data.authcode + "</a>");
-      $("#info").append("<br>Public board can be found <a href='/public/board'>" + window.location.href.split("/")[2] + "/public/board</a>");
-
+      $("#info").html("<li class='nav-item'><a class='nav-link mx-3' href='/join/"+ data.code +"' target='_blank'>" + "<b>Add Entry</b>" + "</a></li>");
+      $("#info").append("<li class='nav-item'><a class='nav-link mx-3' href='/join/handler/" + data.authcode + "' target='_blank'>" + "<b>Handler View</b>"+ "</a></li>");
+      $("#info").append("<li class='nav-item'><a class='nav-link mx-3' href='/public/board' target='_blank'>" + "<b>Public Board</b>" +"</a></li>");
+    
     });
   }
   
@@ -41,7 +42,11 @@ $(function() {
         // convert it to minutes
         var minutes = Math.floor(timeSince / 60000);
 
-        var entryHtml = "<div class='entry' id='entry-" + id + "'>" + name + "<br>" + question +"<br>" + minutes + " minutes ago. <br> Handled by: <b>" + handlerName + "</b></div>";
+        var entryHtml = "<div class='entry card' id='entry-" + id + "'>" +
+                        "<div class='card-block'> <h5 class='card-title'>"+name+"</h5>" +
+                        "<h6 class='card-subtitle mb-2 text-muted'>"+minutes+" minutes ago</h6>" +
+                        "<p class='card-text'>"+question+"</p>" + "</div>"+ 
+                        "<h5><span class='badge bg-danger'>"+handlerName+"</span></h5>" + "</div>";
 
         if (status == 0) {
           waitingBox.append(entryHtml);
@@ -52,29 +57,69 @@ $(function() {
         }
       });
 
+
       // Make the entries draggable
       $(".entry").draggable({
-        revert: "invalid"
+        revert: "invalid",
+        helper: "clone",
+        start: function(event, ui) {
+          $(this).css("visibility", "hidden");
+          $(ui.helper).css("z-index", "9");
+          // $(ui.helper).css('width', "33.33vw");
+        },
+        stop: function(event, ui){
+          $(this).css("visibility", "visible");
+        }
       });
 
       // Make the boxes droppable
       waitingBox.droppable({
         accept: ".entry",
         drop: function(event, ui) {
+          var area = $(this).find(".box").html();
+          var box = $(ui.draggable).html()
+          
+          $(ui.draggable).detach().css({
+            top: 0,
+            left: 0,
+            visibility: "visible"
+          }).appendTo(this);
+
+
           var entryId = ui.draggable.attr("id").split("-")[1];
           updateEntryStatus(entryId, 0);
         }
       });
+
       beingAnsweredBox.droppable({
         accept: ".entry",
         drop: function(event, ui) {
+          var area = $(this).find(".box").html();
+          var box = $(ui.draggable).html()
+          
+          $(ui.draggable).detach().css({
+            top: 0,
+            left: 0,
+            visibility: "visible"
+          }).appendTo(this);
+
           var entryId = ui.draggable.attr("id").split("-")[1];
           updateEntryStatus(entryId, 1);
         }
       });
+
       answeredBox.droppable({
         accept: ".entry",
         drop: function(event, ui) {
+          var area = $(this).find(".box").html();
+          var box = $(ui.draggable).html()
+          
+          $(ui.draggable).detach().css({
+            top: 0,
+            left: 0,
+            visibility: "visible"
+          }).appendTo(this);
+
           var entryId = ui.draggable.attr("id").split("-")[1];
           updateEntryStatus(entryId, 2);
         }
@@ -97,11 +142,8 @@ $(function() {
     });
   }
 
-  // Update the boxes every 30 seconds
-  setInterval(updateBoxes, 10000);
-
   // Update the boxes on page load
-  updateBoxes();
-
   updateInfo();
+  updateBoxes();
 });
+

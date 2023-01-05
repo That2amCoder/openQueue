@@ -1,27 +1,64 @@
-
 .box {
-  width: 200px;
-  height: 200px;
-  border: 1px solid black;
-  float: left;
-  margin: 10px;
+  width: 33.33vw;
+  height: 90vh;
+  overflow-x: visible;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.waiting {
-  background-color: green;
+.box-title{
+  width: 33.33vw;
+  height: 5vh;
+  display: flex;
+  justify-content: center;  
+  align-items: center;
 }
 
-.being-answered {
-  background-color: orange;
+.waiting-title{
+  background-color: #faa28c;
 }
 
-.answered {
-  background-color: red;
+.waiting{
+  background-color: #fdbfaf;
 }
 
-.entry {
+.being-answered-title{
+  background-color: #f7e679;
+}
+
+.being-answered{
+  background-color: #fcee96;
+}
+
+.answered-title{
+  background-color: #82c5ec;
+}
+
+.answered{
+  background-color: #9ccde9;
+}
+
+.flex-container{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+.badge {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  border-radius: 0 0 0 26px;
+  color: #fff;
+}
+
+.entry{
   background-color: white;
-  margin: 5px;
-  padding: 5px;
+  margin-top: 10px;
+  width: 30vw;
+  height: auto;
+  padding: 20px;
   cursor: move;
 }
