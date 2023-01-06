@@ -13,9 +13,29 @@ Also it provides a "handler" page, which automatically gathers the next item in 
 - Also the user knows how far they are in the queue
 
 ## Planned features:
-- A desperate UI overhaul (HELP NEEDED)
 - Statistics, such as number of handlers, average response rate
 - Better customization and optimization
+
+## Documentation
+
+### /create
+
+The /create takes the following parameters:  
+`'title'`: The title of the queue  
+`'description'`: The descpription of the queue  
+`'display_current'`: whether to display the current number on the board  
+```
+'form': [
+    { 
+        "text": The text of the input 
+        "subtext": The subtext of the input
+        "type": (0 = text, 1 = multiple choice, 2 = checkbox, 3 = dropdown)
+        "options": Options for 3, seperated by newlines
+        "required": whether it is required
+        "order": The order it appears starting from 0 being on the top
+    }, ...
+]
+```
 
 ### Admin pages
 

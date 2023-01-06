@@ -24,6 +24,20 @@ def create():
     if 'title' not in flask.request.form or 'description' not in flask.request.form:
         return flask.Response(status=400)
     id, authcode, code = db.create_queue(flask.request.form['title'], flask.request.form['description'], display_current)
+
+    # if "form" in the post request, then the user is creating a form
+    if 'form' in flask.request.form:
+        # Format of the form is JSON { "forms": [ { "name": "Name", "type": "text" }, { "name": "Age", "type": "number" }]
+        # Load the json
+        form = yaml.load(flask.request.form['form'])
+        x = 0
+        for field in form['forms']:
+            db.add_queue_form(id, field['text'],field['subtext'], field['type'], field['options'], field['required'], field['order'])
+            x += 1
+    else: # if there is no form, then create a default form
+        db.add_queue_form(id, 'Name', 'text',0, '', True, 0)
+        db.add_queue_form(id, 'Age', 'number',0, '', True, 1)
+
     res = flask.make_response(flask.redirect('/private/admin'))
     res.set_cookie('authcode', authcode)
     # Set the cookie for the queue
@@ -56,17 +70,28 @@ def get_info():
     queue = db.get_queue(id)
     if queue is None:
         return flask.Response(status=404)
+
     # load the qr code image
     qr = None
     with open('static/qr/' + str(id) + '.png', 'rb') as f:
         qr = base64.b64encode(f.read()).decode('utf-8')
+
+    queue_json = {'title': queue[1], 'description': queue[2], 'display_current': queue[3], 'code': queue[4], 'current': queue[7], 'qr': qr }
+
+    # Get the forms for the queue
+    forms = db.get_queue_forms(id)
+    queue_json['forms'] = []
+    for form in forms:
+        queue_json['forms'].append({'id': form[0], 'text': form[2], 'subtext': form[3], 'type': form[4], 'options': form[5], 'required': form[6], 'order': form[7]})
     
     #if there is an authcode, return it
     if 'authcode' in flask.request.cookies:
         auth_code = flask.request.cookies.get('authcode')
         if db.verify_auth_code(id, auth_code):
-            return flask.jsonify({'title': queue[1], 'description': queue[2], 'display_current': queue[3], 'code': queue[4], 'current': queue[7], 'authcode': flask.request.cookies.get('authcode'), 'qr': qr})
-    return flask.jsonify({'title': queue[1], 'description': queue[2], 'display_current': queue[3], 'code': queue[4], 'current': queue[7], 'qr': qr})
+            queue_json['authcode'] = flask.request.cookies.get('authcode')
+    
+
+    return flask.jsonify(queue_json)
 
 @app.route('/public/getnext')
 def get_next():
@@ -131,9 +156,9 @@ def add_entry():
     id = flask.request.cookies.get('queue_id')
     #Parameters: name, question, extra
     # If a parameter is missing, return 400
-    if 'name' not in flask.request.form:
+    if 'data' not in flask.request.form:
         return flask.Response(status=400)
-    entry_id = db.add_queue_entry(id, flask.request.form['name'], flask.request.form['question'], flask.request.form['extra'])
+    entry_id = db.add_queue_entry(id, flask.request.form['data'])
     return flask.jsonify({'id': entry_id})
 
 @app.route('/public/board')
