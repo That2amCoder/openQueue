@@ -13,9 +13,9 @@ Also it provides a "handler" page, which automatically gathers the next item in 
 - Also the user knows how far they are in the queue
 
 ## Planned features:
-- A desperate UI overhaul (HELP NEEDED)
 - Statistics, such as number of handlers, average response rate
-- Better customization and optimization
+- Better customization and optimization. Such as being able to edit forms.
+- Live handler statistics (location, workload etc)
 
 ### Admin pages
 
