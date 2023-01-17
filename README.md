@@ -19,13 +19,14 @@ Also it provides a "handler" page, which automatically gathers the next item in 
 
 ### Admin pages
 
-![Creation page](https://i.imgur.com/WHMdhe3.png)
+![Creation page](https://i.imgur.com/UnV3w81.png)
 
-![Public board page](https://i.imgur.com/oIzeKc6.png)
+![Public board page](https://i.imgur.com/heAC8cH.png)
 
-![Administrative page](https://i.imgur.com/4BRquvv.png)
+![Administrative page](https://i.imgur.com/yRJOp8o.png)
 
 ### Public pages
-![Queue System Page](https://i.imgur.com/aiewA08.png)
+![Queue System Page](https://i.imgur.com/7IGiSJy.png)
+
 
 
