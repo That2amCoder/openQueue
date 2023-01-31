@@ -16,6 +16,15 @@ form{
     margin-bottom: 20px;
 }
 
+.form-check-label {
+    display: flex;
+    flex-direction: row;
+}
+
+.form-check-label input{
+    margin-right: 10px;
+}
+
 #queue-number {
     display: flex;
     align-items: center;

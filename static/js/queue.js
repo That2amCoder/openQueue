@@ -37,7 +37,6 @@ if (form.type == 0) {
 
 // Make form group div;
 var formGroup = $(`<div class="form-group"></div>`);
-
 // Create the text element
 var text = $(`<label for="${form.id}">${form.text}</label>`);
 // Create the subtext element
@@ -64,22 +63,21 @@ else if (form.type == 1) {
 // Subtext
 // Input
 
-// Create the text element
-var text = document.createElement("h5");
-text.innerHTML = form.text;
-// Create the subtext element
-var subtext = document.createElement("p");
-subtext.innerHTML = form.subtext;
-// Create the input element
-var input = document.createElement("textarea");
-input.className = "form-control";
-input.id = form.id;
-input.placeholder = form.placeholder;
-// Append the elements to the form
-$("#queue-form").append(text);
-$("#queue-form").append(subtext);
-$("#queue-form").append(input);
-// Add to the ids array
+var formGroup = $(`<div class="form-group"></div>`);
+var text = $(`<label for="${form.id}">${form.text}</label>`);
+var subtext = $(`<small class="text-muted">${form.subtext}</small>`);
+var textarea = document.createElement("textarea");
+
+textarea.type = "text";
+textarea.className = "form-control";
+textarea.id = form.id;
+textarea.placeholder = form.text;
+
+formGroup.append(text);
+formGroup.append(textarea);
+formGroup.append(subtext);
+
+$("#queue-form").append(formGroup);
 ids.push(form.id);
 }
 
@@ -89,18 +87,13 @@ else if (form.type == 2) {
 // Input
 // Text
 
-// Create the input element
-var input = document.createElement("input");
-input.type = "checkbox";
-input.className = "form-check-input";
-input.id = form.id;
-// Create the text element
-var text = document.createElement("label");
-text.className = "form-check-label";
-text.innerHTML = form.text;
+var formGroup = $(`<div class="form-group"></div>`);
+
 // Append the elements to the form
-$("#queue-form").append(input);
-$("#queue-form").append(text);
+formGroup.append(`<label class="form-check-label">
+                  <input id="${form.id}" type="checkbox" value="">${form.text}
+                  </label>`);
+$("#queue-form").append(formGroup);
 // Add to the ids array
 ids.push(form.id);
 }
