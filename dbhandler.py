@@ -118,6 +118,9 @@ class DBHandler:
         # Returns the lowest ID entry with status 0
         cur.execute("SELECT * FROM queue_entries WHERE queue_id=? AND status=0 ORDER BY id ASC LIMIT 1", (id,))
         entry = cur.fetchone()
+        # If there are no entries, return None
+        if entry is None:
+            return None
         entry_json = {}
         entry_json['id'] = entry[0]
         entry_json['queue_id'] = entry[1]
