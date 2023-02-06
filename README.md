@@ -14,38 +14,16 @@ Also it provides a "handler" page, which automatically gathers the next item in 
 
 ## Planned features:
 - Statistics, such as number of handlers, average response rate
-- Better customization and optimization
-
-## Documentation
-
-### /create
-
-The /create takes the following parameters:  
-`'title'`: The title of the queue  
-`'description'`: The descpription of the queue  
-`'display_current'`: whether to display the current number on the board  
-```
-'form': [
-    { 
-        "text": The text of the input 
-        "subtext": The subtext of the input
-        "type": (0 = text, 1 = multiple choice, 2 = checkbox, 3 = dropdown)
-        "options": Options for 3, seperated by newlines
-        "required": whether it is required
-        "order": The order it appears starting from 0 being on the top
-    }, ...
-]
-```
+- Better customization and optimization. Such as being able to edit forms.
+- Live handler statistics (location, workload etc)
 
 ### Admin pages
 
-![Creation page](https://i.imgur.com/WHMdhe3.png)
+![Creation page](https://i.imgur.com/UnV3w81.png)
 
-![Public board page](https://i.imgur.com/oIzeKc6.png)
+![Public board page](https://i.imgur.com/heAC8cH.png)
 
-![Administrative page](https://i.imgur.com/4BRquvv.png)
+![Administrative page](https://i.imgur.com/yRJOp8o.png)
 
 ### Public pages
-![Queue System Page](https://i.imgur.com/aiewA08.png)
-
-
+![Queue System Page](https://i.imgur.com/7IGiSJy.png)
