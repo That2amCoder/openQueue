@@ -1,7 +1,7 @@
 import flask
 from dbhandler import DBHandler
 import qrcode
-import yaml
+import yaml, json
 import io, os
 import base64
 app = flask.Flask(__name__)
@@ -24,12 +24,12 @@ def create():
     if 'title' not in flask.request.form or 'description' not in flask.request.form:
         return flask.Response(status=400)
     id, authcode, code = db.create_queue(flask.request.form['title'], flask.request.form['description'], display_current)
-
+    print(flask.request.form)
     # if "form" in the post request, then the user is creating a form
-    if 'form' in flask.request.form:
+    if 'questionList' in flask.request.form:
         # Format of the form is JSON { "forms": [ { "name": "Name", "type": "text" }, { "name": "Age", "type": "number" }]
         # Load the json
-        form = yaml.load(flask.request.form['form'])
+        form = json.loads(flask.request.form['questionList'])
         x = 0
         for field in form['forms']:
             db.add_queue_form(id, field['text'],field['subtext'], field['type'], field['options'], field['required'], field['order'])

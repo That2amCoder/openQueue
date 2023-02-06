@@ -11,17 +11,20 @@
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
+  <script src="/static/js/index.js"></script>
 </head>
 
 <body>
-
-  <form class="text-center border border-light p-5" action="/create" method="POST">
+  <!-- Call myFunction -->
+  <form class="text-center border border-light p-5" id="createQueueForm">
     <p class="h4 mb-4">Create a New Queue System</p>
 
     <input type="text" id="title" name="title" class="form-control mb-4" placeholder="Title" required>
-    <textarea id="description" name="description" class="form-control form-control mb-4" placeholder="Description"
-      required></textarea>
+    <textarea id="description" name="description" class="form-control form-control mb-4" placeholder="Description"required></textarea>
+
+    <div id="questionList"></div>
+
+
     <label for="display_current">Display Current Number:</label>
     <input type="checkbox" id="display_current" name="display_current">
 
@@ -29,6 +32,34 @@
     <input class="btn btn-block" type="submit" value="Submit">
 
   </form>
+
+  <div id="newQuestion">
+    <!-- Inline: <textbox for title> <textbox for subtitle> <Drop down for type (0 = text, 1 = multiple choice, 2 = checkbox, 3 = dropdown)> <Checkbox required> -->
+    <div class="form-row mb-4">
+      <div class="col">
+        <input type="text" id="question_title" name="question_title" class="form-control" placeholder="Question Title" required>
+      </div>
+      <div class="col">
+        <input type="text" id="question_subtitle" name="question_subtitle" class="form-control" placeholder="Question Subtitle">
+      </div>
+      <div class="col">
+        <select class="browser-default custom-select" id="question_type" name="question_type">
+          <option value="0" selected>Text</option>
+          <option value="1">Multiple Choice</option>
+          <option value="2">Checkbox</option>
+          <option value="3">Dropdown</option>
+        </select>
+      </div>
+      <div class="col">
+        <input type="checkbox" id="question_required" name="question_required">
+        <label for="question_required">Required</label>
+      </div>
+      <!-- Add question button -->
+      <div class="col">
+        <button type="button" class="btn btn-primary" id="addQuestion">Add Question</button>
+      </div>
+    </div>
+  </div>
 
 
 
