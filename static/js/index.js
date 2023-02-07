@@ -9,10 +9,13 @@ $(document).ready(function() {
         var text = $("#question_title").val();
         var subtext = $("#question_subtitle").val();
         var type = $("#question_type").val();
-        // Add the question to the questionList
-        questionList.forms.push({'text': text, 'subtext': subtext, 'type': type, 'options': '', 'required': false, order: x});
+        var required = $("#question_required").val();
+        var options = $("#question_options").val();
+
+        questionList.forms.push({'text': text, 'subtext': subtext, 'type': type, 'options': options, 'required': required, order: x});
         // add the entry to #questionList
-        $("#questionList").append('<li class="list-group-item" id="' + x + '">' + text + ': ' + subtext + ' (' + type + ')' + '</li>');
+        $("#questionList").append('<li class="list-group-item" id="' + x + '">' + text + ': ' + subtext + '</li>');
+        // If its a dropdown or multiple choice, add the options
         x++;
 
         // Clear the input fields
@@ -27,7 +30,6 @@ $(document).ready(function() {
         var title = $("#title").val();
         var description = $("#description").val();
         var display_current = $("#display_current").val();
-
         // JSOnify the questionList
         questionListtxt = JSON.stringify(questionList);
         
@@ -37,6 +39,15 @@ $(document).ready(function() {
         });
         // Set the site to /private/admin
         window.location.href = "/private/admin";
+    });
+
+    $("#question_type").change(function() {
+        var type = $("#question_type").val();
+        if (type == 2 || type == 4) {
+            $("#question_options_div").show();
+        } else {
+            $("#question_options_div").hide();
+        }
     });
 });
 

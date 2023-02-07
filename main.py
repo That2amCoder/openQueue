@@ -24,7 +24,7 @@ def create():
     if 'title' not in flask.request.form or 'description' not in flask.request.form:
         return flask.Response(status=400)
     id, authcode, code = db.create_queue(flask.request.form['title'], flask.request.form['description'], display_current)
-    print(flask.request.form)
+
     # if "form" in the post request, then the user is creating a form
     if 'questionList' in flask.request.form:
         # Format of the form is JSON { "forms": [ { "name": "Name", "type": "text" }, { "name": "Age", "type": "number" }]
