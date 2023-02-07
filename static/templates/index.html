@@ -45,9 +45,10 @@
       <div class="col">
         <select class="browser-default custom-select" id="question_type" name="question_type">
           <option value="0" selected>Text</option>
-          <option value="1">Multiple Choice</option>
+          <option value="1">Text area</option>
           <option value="2">Checkbox</option>
-          <option value="3">Dropdown</option>
+          <option value="3">Multiple Choice</option>
+          <option value="4">Dropdown</option>
         </select>
       </div>
       <div class="col">
@@ -58,6 +59,10 @@
       <div class="col">
         <button type="button" class="btn btn-primary" id="addQuestion">Add Question</button>
       </div>
+      <!-- question_options A textbox supporting newlines to allow for options hidden by default -->
+      <div class="col" id="question_options_div" style="display: none;">
+        <textarea id="question_options" name="question_options" class="form-control form-control mb-4" placeholder="Options (separate by new line)"></textarea>
+      </div>  
     </div>
   </div>
 
