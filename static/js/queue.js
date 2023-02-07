@@ -51,8 +51,8 @@ $.get("/public/info", function(data) {
             input.placeholder = form.text;
             // Append the elements to the form
             formGroup.append(text);
-            formGroup.append(input);
             formGroup.append(subtext);
+            formGroup.append(input);
 
             $("#queue-form").append(formGroup);
             // Add to the ids array
@@ -75,8 +75,8 @@ $.get("/public/info", function(data) {
             textarea.placeholder = form.text;
 
             formGroup.append(text);
-            formGroup.append(textarea);
             formGroup.append(subtext);
+            formGroup.append(textarea);
 
             $("#queue-form").append(formGroup);
             ids.push(form.id);
