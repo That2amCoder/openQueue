@@ -27,6 +27,3 @@ Also it provides a "handler" page, which automatically gathers the next item in 
 
 ### Public pages
 ![Queue System Page](https://i.imgur.com/7IGiSJy.png)
-
-
-

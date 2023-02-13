@@ -1,36 +1,64 @@
 $(function() {
+    var ids = [];
+    var forms = {};
+
+    function updateInfo() {
+      //Make a get request to /public/info
+      $.getJSON("/public/info", function(data) {
+        // For each item in the 'forms' array, add a new form to the page
+        data.forms.forEach(function(form) {
+          // Add the form to the forms dict
+          ids.push(form.id);
+          forms[form.id] = form.text;
+          updateEntry();
+        });
+
+      });
+    }
     function updateEntry() {
       $.getJSON("/private/handler/getnext", function(data) {
         var entry = data.entry;
+        // if entry is null, there are no entries in the queue
+        if (entry == null) {
+          $("#entry").html("<h1>No entries in the queue</h1>");
+          return;
+        }
 
-        var id = entry[0];
-        var queueId = entry[1];
-        var name = entry[2];
-        var question = entry[3];
-        var extra = entry[4];
-        var timestamp = entry[5];
-        var status = entry[6];
-        var handlerName = entry[7];
+        var id = entry.id;
+        var queueId = entry.queue_id;
+        var timestamp = entry.timestamp;
+        var status = entry.status;
+        var handlerName = entry.handler_name;
         // Caclulate the time since the entry was created. The timestamp is EPOC time in seconds
         var timeSince = Date.now() - (timestamp * 1000);
         // convert it to minutes
         var minutes = Math.floor(timeSince / 60000);
 
-        var entryHtml = "<div class='entry card' id='entry-" + id + "'>" +
-        "<div class='card-block'> <h5 class='card-title'>"+name+"</h5>" +
-        "<h6 class='card-subtitle mb-2 text-muted'>"+minutes+" minutes ago</h6>" +
-        "<p class='card-text'>"+question+"</p>" + "</div>"+ 
-        "<p class='card-text'>"+extra+"</p>"+
-        "<div class='btn-group' role='group'>"+ 
-        "<button id='" + id + "' class='btn ghost-button'>Ghost</button>"+
-        "<button id='" + id + "' class='btn in-progress-button'>In Progress</button>"+
-        "<button id='" + id + "' class='btn finished-button'>Finished</button>"+"</div>";
+        var entryHtml = "<div class='entry card' id='entry-" + id + "'>" 
+        
+
+        // Iterate through the ids array and add the form data to the entry
+        entry.data = JSON.parse(entry.data);
+        ids.forEach(function(id) {
+          //html encode any special characters
+          var sanitisedData = entry.data[id];
+          sanitisedData = sanitisedData.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+          entryHtml += "<p><b>" + forms[id] + "</b>: " + sanitisedData + "</p>";
+        });
+        
+
+        entryHtml += "<h6 class='card-subtitle mb-2 text-muted'>"+minutes+" minutes ago</h6>"+
+                    "<div class='btn-group' role='group'>"+ 
+                    "<button id='" + id + "' class='btn ghost-button'>Ghost</button>"+
+                    "<button id='" + id + "' class='btn in-progress-button'>In Progress</button>"+
+                    "<button id='" + id + "' class='btn finished-button'>Finished</button>"+"</div>";
         
         $("#entry").html(entryHtml);
       });
     }
 
     // Update the entry on page load
+    updateInfo();
     updateEntry();
 
     // Update the entry's status when the buttons are clicked using their class
